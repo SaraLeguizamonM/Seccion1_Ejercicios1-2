@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-
 public class Main {
     public static String unidad;
     public static double valor;
@@ -14,29 +13,35 @@ public class Main {
             System.out.println("1. Ingresar el valor y la unidad");
             System.out.println("2. Ingresar solamente el valor");
             System.out.println("0. Salir");
-            switch(sc.nextInt()) {
-                case 1:
-                    System.out.println(" ");
-                    System.out.println("Ingresa una unidad que desea convertir: ");
-                    sc.nextLine();
-                    unidad = sc.nextLine();
-                    System.out.println("Ahora ingresa su valor: ");
-                    valor = sc.nextInt();
-                    Medida.unidadValor(unidad,valor);
-
-                    break;
-                case 2:
-                    System.out.println(" ");
-                    Medida.unidadPorDefecto(valor); //
-                    sc.nextLine();
-                    break;
-                case 0:
-                    sc.close();
-                    return;
-                default:
-                    System.out.println("Opcion no reconocida, porfavor intentelo de nuevo");
-                    System.out.println(" ");
+            System.out.println(" ");
+            String opcion = "";
+            while(!opcion.equals("2") || !opcion.equals("0") || !opcion.equals("1")){
+                opcion = sc.nextLine();
+                switch((opcion)) {
+                    case "1":
+                        System.out.println(" ");
+                        System.out.println("Ingresa una unidad que desea convertir: ");
+                        unidad = sc.nextLine();
+                        System.out.println("Ahora ingresa su valor: ");
+                        valor = sc.nextInt();
+                        Medida.unidadValor(unidad,valor);
+                        break;
+                    case "2":
+                        System.out.println(" ");
+                        System.out.println("Ingrese su valor: ");
+                        valor = sc.nextInt();
+                        Medida.unidadPorDefecto(valor);
+                        sc.nextLine();
+                        break;
+                    case "0":
+                        sc.close();
+                        return;
+                    default:
+                        System.out.println("Opcion no reconocida, porfavor intentelo de nuevo");
+                        System.out.println(" ");
+                }
             }
+            
         }while (true);
     }
 }
