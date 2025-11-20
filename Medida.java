@@ -1,8 +1,9 @@
 import java.util.Scanner;
 
 public class Medida {
+    public static Scanner sc = new Scanner(System.in);
 
-    public static void unidadPorDefecto(Scanner sc) {
+    public static void unidadPorDefecto(double valor) {
         System.out.println("Le recordamos que solo se permite la conversion entre unidades de la misma categoria ");
         System.out.println("Categorias disponibles: ");
         System.out.println("1. Longitud (km, m, cm, mm, µm, mi, yd, ft, in) ");
@@ -13,30 +14,31 @@ public class Medida {
         System.out.println("0. Volver al menu principal ");
 
         System.out.print("Seleccione la categoria de unidades que desea convertir (1-5): ");
+
         switch (sc.nextLine()) {
             case "1":
                 System.out.println(" ");
-                Tools.categoriaLongitud(sc);
-                sc.nextLine();
+                Tools.categoriaLongitud("m", valor);
+
                 break;
             case "2":
                 System.out.println(" ");
-                Tools.categoriaMasa(sc);
-                sc.nextLine();
+                Tools.categoriaMasa("kg", valor);
+
                 break;
             case "3":
                 System.out.println(" ");
-                Tools.categoriaTemperatura(sc);
-                sc.nextLine();
+                Tools.categoriaTemperatura("C", valor);
+
                 break;
             case "4":
                 System.out.println(" ");
-                Tools.categoriaVolumen(sc);
+                Tools.categoriaVolumen("L", valor);
                 sc.nextLine();
                 break;
             case "5":
                 System.out.println(" ");
-                Tools.categoriaTiempo(sc);
+                Tools.categoriaTiempo("s", valor);
                 sc.nextLine();
                 break;
             case "0":
@@ -47,6 +49,7 @@ public class Medida {
             default:
                 System.out.println("Opcion no reconocida, porfavor intentelo de nuevo");
                 System.out.println(" ");
+                unidadPorDefecto(valor);
         }
     }
 
