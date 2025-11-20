@@ -1,6 +1,10 @@
 import java.util.Scanner;
 
+
 public class Main {
+    public static String unidad;
+    public static double valor;
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -13,12 +17,17 @@ public class Main {
             switch(sc.nextInt()) {
                 case 1:
                     System.out.println(" ");
-                    Medida.unidadValor(sc);
+                    System.out.println("Ingresa una unidad que desea convertir: ");
                     sc.nextLine();
+                    unidad = sc.nextLine();
+                    System.out.println("Ahora ingresa su valor: ");
+                    valor = sc.nextInt();
+                    Medida.unidadValor(unidad,valor);
+
                     break;
                 case 2:
                     System.out.println(" ");
-                    Medida.unidadPorDefecto(sc);
+                    Medida.unidadPorDefecto(valor); //
                     sc.nextLine();
                     break;
                 case 0:
