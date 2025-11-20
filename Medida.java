@@ -53,7 +53,42 @@ public class Medida {
         }
     }
 
-    public static void unidadValor(Scanner sc) {
+    public static void unidadValor(String unidad, double valor) {
+        String[] unidadlongitud = {"km", "m", "cm", "mm", "µm", "mi", "yd", "ft", "in"}; // Nos permite validar desde una base, asi evitamos numeros o caracteres especiales
+        for(int i = 0; i < unidadlongitud.length; i++){
+            if(unidadlongitud[i].equals(unidad)){
+                Tools.categoriaLongitud(unidad, valor);
+                break;
+            }
+        }
+        String[] unidadMasa = {"kg", "g", "mg", "t", "lb", "oz", "ton"}; // Nos permite validar desde una base, asi evitamos numeros o caracteres especiales
+        for(int i = 0; i < unidadMasa.length; i++){
+            if(unidadMasa[i].equals(unidad)){
+                Tools.categoriaMasa(unidad, valor);
+                break;
+            }
+        }
+        String[] unidadTemperatura = {"C", "K", "F", "R"}; // Nos permite validar desde una base, asi evitamos numeros o caracteres especiales
+        for(int i = 0; i < unidadTemperatura.length; i++){
+            if(unidadTemperatura[i].equals(unidad)){
+                Tools.categoriaTemperatura(unidad, valor);
+                break;
+            }
+        }
+        String[] unidadVolumen = {"m3", "L", "mL", "cm3", "kL", "gal", "qt", "pt", "oz", "bbl"}; // Nos permite validar desde una base, asi evitamos numeros o caracteres especiales
+        for(int i = 0; i < unidadVolumen.length; i++){
+            if(unidadVolumen[i].equals(unidad)){
+                Tools.categoriaVolumen(unidad, valor);
+                break;
+            }
+        }
+        String[] unidadTiempo = {"s", "min", "h", "d", "a", "ms", "µs"}; // Nos permite validar desde una base, asi evitamos numeros o caracteres especiales
+        for(int i = 0; i < unidadTiempo.length; i++){
+            if(unidadTiempo[i].equals(unidad)){
+                Tools.categoriaTiempo(unidad, valor);
+                break;
+            }
+        }
     }
 
 
