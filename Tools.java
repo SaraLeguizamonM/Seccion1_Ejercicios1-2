@@ -4,7 +4,7 @@ public class Tools {
     public static Scanner sc = new Scanner(System.in);
 
     // Categorias de Unidades
-    public static void categoriaLongitud() {
+    public static void categoriaLongitud(String unidad, double valor) {
         System.out.println("A que tipo de unidad desea convertir?");
 
         boolean longitudValida = false;
@@ -20,7 +20,7 @@ public class Tools {
             }
         }
     }
-    public static void categoriaMasa() {
+    public static void categoriaMasa(String unidad, double valor) {
         System.out.println("A que tipo de unidad desea convertir?");
 
         boolean masaValida = false;
@@ -37,7 +37,7 @@ public class Tools {
         }
 
     }
-    public static void categoriaTemperatura() {
+    public static void categoriaTemperatura(String unidad, double valor) {
         System.out.println("A que tipo de unidad desea convertir?");
 
         boolean temperaturaValida = false;
@@ -54,7 +54,7 @@ public class Tools {
         }
 
     }
-    public static void categoriaVolumen() {
+    public static void categoriaVolumen(String unidad, double valor) {
         System.out.println("A que tipo de unidad desea convertir?");
 
         boolean volumenValido = false;
@@ -70,7 +70,7 @@ public class Tools {
         }
 
     }
-    public static void categoriaTiempo() {
+    public static void categoriaTiempo(String unidad, double valor) {
         System.out.println("A que tipo de unidad desea convertir?");
         boolean tiempoValido = false;
         while (!tiempoValido) {
@@ -86,6 +86,13 @@ public class Tools {
         }
 
     }
+
+    // Convertir
+    public static void convertirNuevaUnidad(String nuevaUnidad) {
+
+    }
+
+
 
     // Manejo de excepciones de cada categoria
     // Longitud
