@@ -66,7 +66,7 @@ public class Tools {
         boolean volumenValido = false;
         while (!volumenValido) {
             try {
-                System.out.println("Se le recuerda al usuario que solo esta permitido: m3, L, mL, cm3, kL, gal, qt, pt, oz, bbl");
+                System.out.println("Se le recuerda al usuario que solo esta permitido: m3, L, mL, cm3, kL, qt, pt, oz, bbl");
                 String tipo = sc.nextLine().trim(); // Elimina espacios en blanco al inicio y al final de la cadena.
                 Errores.tipoVolumen(tipo); // Verifica con el metodo de control de errores
                 convertirEnumUnidad(tipo, String.valueOf(valor));
@@ -247,9 +247,6 @@ public class Tools {
         if (Main.unidad.equals("kL")) {
             volumen = volumen * 1000;
         }
-        if (Main.unidad.equals("gal")) {
-            volumen = volumen * 3.785411784;
-        }
         if (Main.unidad.equals("qt")) {
             volumen = volumen * 0.946353;
         }
@@ -275,9 +272,6 @@ public class Tools {
         }
         if (unidad.equals("kL")) {
             volumen = volumen / 1000;
-        }
-        if (unidad.equals("gal")) {
-            volumen = volumen / 3.785411784;
         }
         if (unidad.equals("qt")) {
             volumen = volumen / 0.946353;
@@ -363,7 +357,7 @@ public class Tools {
                 break;
             }
         }
-        String[] unidadVolumen = {"m3", "L", "mL", "cm3", "kL", "gal", "qt", "pt", "oz", "bbl"}; // Nos permite validar desde una base, asi evitamos numeros o caracteres especiales
+        String[] unidadVolumen = {"m3", "L", "mL", "cm3", "kL", "qt", "pt", "oz", "bbl"}; // Nos permite validar desde una base, asi evitamos numeros o caracteres especiales
         for(int i = 0; i < unidadVolumen.length; i++){
             if(unidadVolumen[i].equals(nuevaUnidad)){
                 identificadorTipo  = "Volumen";
