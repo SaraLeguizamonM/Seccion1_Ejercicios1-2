@@ -9,7 +9,7 @@ public class Main {
         System.out.println("Bienvenido al Convertidor de Unidades Avanzadas ");
         System.out.println("Elige la opcion que desees ejecutar: ");
         String opcion = " ";
-        while (!opcion.equals("2") || !opcion.equals("0") || !opcion.equals("1")) {
+        do {
             System.out.println("1. Ingresar el valor y la unidad");
             System.out.println("2. Ingresar solamente el valor");
             System.out.println("0. Salir");
@@ -51,12 +51,12 @@ public class Main {
                     Medida.unidadPorDefecto(Double.parseDouble(valor));
                     break;
                 case "0":
-                    sc.close();
-                    return;
+                    System.out.println("Gracias por usar el Convertidor de Unidades Avanzadas. ¡Hasta luego!");
+                    break;
                 default:
                     System.out.println("Opcion no reconocida, porfavor intentelo de nuevo");
+                    opcion = "1";
             }
-        }
-        System.out.println("Feliz dia");
+        } while (!opcion.equals("0") );
     }
 }
