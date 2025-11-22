@@ -2,6 +2,9 @@ package ejercicio1;
 
 public class Errores {
     // Manejo de errores de cada categoria
+    // Cada uno lanza una excepcion si la unidad no pertenece a la categoria correspondiente usando el metodo
+    // convertirNuevaUnidad de la clase Tools que es como un filtro que se usa en mas lugares.
+    
     // Longitud
     public static void tipoLongitud(String tipoLongitud) throws Exception{
         if(tipoLongitud.isEmpty()){
