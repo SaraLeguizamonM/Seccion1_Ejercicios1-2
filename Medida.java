@@ -9,7 +9,7 @@ public class Medida {
         System.out.println("1. Longitud (km, m, cm, mm, µm, mi, yd, ft, in) ");
         System.out.println("2. Masa (kg, g, mg, lb, ton) ");
         System.out.println("3. Temperatura (C, K, F) ");
-        System.out.println("4. Volumen (m3, L, mL, cm3, kL, gal, qt, pt, oz, bbl) ");
+        System.out.println("4. Volumen (m3, L, mL, cm3, kL, qt, pt, oz, bbl) ");
         System.out.println("5. Tiempo (s, min, h, d, a, ms, µs) ");
         System.out.println("0. Volver al menu principal ");
 
@@ -42,7 +42,7 @@ public class Medida {
                 Tools.categoriaTiempo(Main.unidad, valor);
                 break;
             case "0":
-                System.out.println("Gracias por usar el Convertidor de Unidades Avanzadas. ¡Hasta luego!");
+                System.out.println("¡Hasta luego!");
                 System.out.println(" ");
                 Main.main(null);
                 break;
