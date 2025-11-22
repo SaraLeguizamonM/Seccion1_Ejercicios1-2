@@ -1,4 +1,6 @@
+package seccion1;
 import java.util.Scanner;
+
 
 public class Main {
     public static String unidad;
