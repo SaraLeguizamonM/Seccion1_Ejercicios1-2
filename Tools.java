@@ -13,7 +13,7 @@ public class Tools {
                 System.out.println("Se le recuerda al usuario que solo esta permitido: km, m, cm, mm, µm, mi, yd, ft, in");
                 String tipo = sc.nextLine().trim(); // Elimina espacios en blanco al inicio y al final de la cadena.
                 tipo = tipo.toLowerCase(); // Para que no haya problemas con las mayusculas
-                tipoLongitud(tipo); // Verifica con el metodo de control de errores
+                Errores.tipoLongitud(tipo); // Verifica con el metodo de control de errores
                 convertirEnumUnidad(tipo, String.valueOf(valor));
                 System.out.println(" ");
                 longitudValida = true;
@@ -28,11 +28,12 @@ public class Tools {
         boolean masaValida = false;
         while (!masaValida) {
             try {
-                System.out.println("Se le recuerda al usuario que solo esta permitido: kg, g, mg, lb, oz, ton");
+                System.out.println("Se le recuerda al usuario que solo esta permitido: kg, g, mg, lb, ton");
                 String tipo = sc.nextLine().trim(); // Elimina espacios en blanco al inicio y al final de la cadena.
                 tipo = tipo.toLowerCase(); // Para que no haya problemas con las mayusculas
-                tipoMasa(tipo); // Verifica con el metodo de control de errores
-                convertirEnumUnidad(unidad, String.valueOf(valor));
+                Errores.tipoMasa(tipo); // Verifica con el metodo de control de errores
+                convertirEnumUnidad(tipo, String.valueOf(valor));
+                System.out.println(" ");
                 masaValida = true;
             }catch (Exception e){
                 System.out.println("Error: " + e.getMessage());
@@ -49,7 +50,7 @@ public class Tools {
                 System.out.println("Se le recuerda al usuario que solo esta permitido: C, K, F");
                 String tipo = sc.nextLine().trim(); // Elimina espacios en blanco al inicio y al final de la cadena.
                 tipo = tipo.toUpperCase(); // Para que no haya problemas con las mayusculas
-                tipoTemperatura(tipo); // Verifica con el metodo de control de errores
+                Errores.tipoTemperatura(tipo); // Verifica con el metodo de control de errores
                 convertirEnumUnidad(tipo, String.valueOf(valor));
                 System.out.println(" ");
                 temperaturaValida = true;
@@ -67,7 +68,7 @@ public class Tools {
             try {
                 System.out.println("Se le recuerda al usuario que solo esta permitido: m3, L, mL, cm3, kL, gal, qt, pt, oz, bbl");
                 String tipo = sc.nextLine().trim(); // Elimina espacios en blanco al inicio y al final de la cadena.
-                tipoVolumen(tipo); // Verifica con el metodo de control de errores
+                Errores.tipoVolumen(tipo); // Verifica con el metodo de control de errores
                 convertirEnumUnidad(tipo, String.valueOf(valor));
                 System.out.println(" ");
                 volumenValido = true;
@@ -85,7 +86,7 @@ public class Tools {
                 System.out.println("Se le recuerda al usuario que solo esta permitido: s, min, h, d, a, ms, µs");
                 String tipo = sc.nextLine().trim(); // Elimina espacios en blanco al inicio y al final de la cadena.
                 tipo = tipo.toLowerCase(); // Para que no haya problemas con las mayusculas
-                tipoTiempo(tipo); // Verifica con el metodo de control de errores
+                Errores.tipoTiempo(tipo); // Verifica con el metodo de control de errores
                 convertirEnumUnidad(tipo, String.valueOf(valor));
                 System.out.println(" ");
                 tiempoValido = true;
@@ -103,16 +104,16 @@ public class Tools {
         if (tipo.equals("Longitud")) {
             convertirLongitud(unidad, Double.parseDouble(enumUnidad));
         }
-        if (tipo.equals("masa")) {
+        if (tipo.equals("Masa")) {
             convertirMasa(unidad, Double.parseDouble(enumUnidad));
         }
-        if (tipo.equals("temperatura")) {
+        if (tipo.equals("Temperatura")) {
             convertirTemperatura(unidad, Double.parseDouble(enumUnidad));
         }
-        if (tipo.equals("volumen")) {
+        if (tipo.equals("Volumen")) {
             convertirVolumen(unidad, Double.parseDouble(enumUnidad));
         }
-        if (tipo.equals("tiempo")) {
+        if (tipo.equals("Tiempo")) {
             convertirTiempo(unidad, Double.parseDouble(enumUnidad));
 
         }
@@ -120,8 +121,6 @@ public class Tools {
     }
 
     public static void convertirLongitud(String unidad, double longitud) {
-        System.out.println(Main.unidad);
-        System.out.println(unidad);
         // Pasar a metros
         if (Main.unidad.equals("km")) {
             longitud = longitud * 1000;
@@ -186,9 +185,6 @@ public class Tools {
         if (Main.unidad.equals("lb")) {
             masa = masa * 0.45359237;
         }
-        if (Main.unidad.equals("oz")) {
-            masa = masa * 0.028349523125;
-        }
         if (Main.unidad.equals("ton ")) {
             masa = masa * 907.18474;
         }
@@ -202,9 +198,6 @@ public class Tools {
         }
         if (unidad.equals("lb")) {
             masa = masa / 0.45359237;
-        }
-        if (unidad.equals("oz")) {
-            masa = masa / 0.028349523125;
         }
         if (unidad.equals("ton ")) {
             masa = masa / 907.18474;
@@ -347,7 +340,7 @@ public class Tools {
 
     // Filtro
     public static String convertirNuevaUnidad(String nuevaUnidad) {
-        String identificadorTipo = "";
+        String identificadorTipo = " ";
         String[] unidadlongitud = {"km", "m", "cm", "mm", "µm", "mi", "yd", "ft", "in"}; // Nos permite validar desde una base, asi evitamos numeros o caracteres especiales
         for(int i = 0; i < unidadlongitud.length; i++){
             if(unidadlongitud[i].equals(nuevaUnidad)){
@@ -356,7 +349,7 @@ public class Tools {
                 break;
             }
         }
-        String[] unidadMasa = {"kg", "g", "mg", "lb", "oz", "ton"}; // Nos permite validar desde una base, asi evitamos numeros o caracteres especiales
+        String[] unidadMasa = {"kg", "g", "mg", "lb", "ton"}; // Nos permite validar desde una base, asi evitamos numeros o caracteres especiales
         for(int i = 0; i < unidadMasa.length; i++){
             if(unidadMasa[i].equals(nuevaUnidad)){
                 identificadorTipo = "Masa";
@@ -384,55 +377,6 @@ public class Tools {
                 break;
             }
         } return identificadorTipo;
-    }
-
-
-    // Manejo de errores de cada categoria
-    // Longitud
-    public static void tipoLongitud(String tipoLongitud) throws Exception{
-        if(tipoLongitud.isEmpty()){
-            throw new Exception("No puede ser vacio");
-        }
-
-        if(!convertirNuevaUnidad(tipoLongitud).equals("Longitud")){
-            throw new Exception("No se encontro unidad, use una de las unidades mencionadas anteriormente.");
-        }
-    }
-    // Masa
-    public static void tipoMasa(String tipoMasa) throws Exception{
-        if(tipoMasa.isEmpty()){
-            throw new Exception("No puede ser vacio");
-        }
-        if(!convertirNuevaUnidad(tipoMasa).equals("Masa")){
-            throw new Exception("No se encontro unidad, use una de las unidades mencionadas anteriormente.");
-        }
-    }
-    // Temperatura
-    public static void tipoTemperatura(String tipoTemperatura) throws Exception{
-        if(tipoTemperatura.isEmpty()){
-            throw new Exception("No puede ser vacio");
-        }
-        if(!convertirNuevaUnidad(tipoTemperatura).equals("Temperatura")){
-            throw new Exception("No se encontro unidad, use una de las unidades mencionadas anteriormente.");
-        }
-    }
-    // Volumen
-    public static void tipoVolumen(String tipoVolumen) throws Exception{
-        if(tipoVolumen.isEmpty()){
-            throw new Exception("No puede ser vacio");
-        }
-        if(!convertirNuevaUnidad(tipoVolumen).equals("Volumen")){
-            throw new Exception("No se encontro unidad, use una de las unidades mencionadas anteriormente.");
-        }
-    }
-    // Tiempo
-    public static void tipoTiempo(String tipoTiempo) throws Exception{
-        if(tipoTiempo.isEmpty()){
-            throw new Exception("No puede ser vacio");
-        }
-        if(!convertirNuevaUnidad(tipoTiempo).equals("Tiempo")){
-            throw new Exception("No se encontro unidad, use una de las unidades mencionadas anteriormente.");
-        }
     }
 }
 
