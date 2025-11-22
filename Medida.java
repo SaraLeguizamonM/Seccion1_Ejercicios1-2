@@ -1,4 +1,3 @@
-package seccion1;
 import java.util.Scanner;
 
 public class Medida {
