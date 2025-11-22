@@ -4,6 +4,26 @@ import java.util.Scanner;
 public class Medida {
     public static Scanner sc = new Scanner(System.in);
 
+    // Unidad con valor y unidad 
+    public static void unidadValor(String unidad, double valor) {
+        if (Tools.convertirNuevaUnidad(unidad).equals("Longitud")) {
+            Tools.categoriaLongitud(unidad, valor); // Desde aqui se llama a la categoria correspondiente
+        }
+        if (Tools.convertirNuevaUnidad(unidad).equals("Masa")) {
+            Tools.categoriaMasa(unidad, valor); // Desde aqui se llama a la categoria correspondiente
+        }
+        if (Tools.convertirNuevaUnidad(unidad).equals("Temperatura")) {
+            Tools.categoriaTemperatura(unidad, valor); // Desde aqui se llama a la categoria correspondiente
+        }
+        if (Tools.convertirNuevaUnidad(unidad).equals("Volumen")) {
+            Tools.categoriaVolumen(unidad, valor); // Desde aqui se llama a la categoria correspondiente
+        }
+        if (Tools.convertirNuevaUnidad(unidad).equals("Tiempo")) {
+            Tools.categoriaTiempo(unidad, valor); // Desde aqui se llama a la categoria correspondiente
+        }
+    }
+
+    // Unidad por defecto
     public static void unidadPorDefecto(double valor) {
         System.out.println("Le recordamos que solo se permite la conversion entre unidades de la misma categoria ");
         System.out.println("Categorias disponibles: ");
@@ -15,60 +35,42 @@ public class Medida {
         System.out.println("0. Volver al menu principal ");
 
         System.out.print("Seleccione la categoria de unidades que desea convertir (1-5): ");
-
+        
         switch (sc.nextLine()) {
             case "1":
                 System.out.println(" ");
-                Main.unidad = "m";
-                Tools.categoriaLongitud(Main.unidad, valor);
+                Main.unidad = "m"; // Unidad por defecto
+                Tools.categoriaLongitud(Main.unidad, valor); // Desde aqui se llama a la categoria correspondiente
                 break;
             case "2":
                 System.out.println(" ");
-                Main.unidad = "kg";
+                Main.unidad = "kg"; // Unidad por defecto
                 Tools.categoriaMasa(Main.unidad, valor);
                 break;
             case "3":
                 System.out.println(" ");
-                Main.unidad = "C";
-                Tools.categoriaTemperatura(Main.unidad, valor);
+                Main.unidad = "C"; // Unidad por defecto
+                Tools.categoriaTemperatura(Main.unidad, valor); // Desde aqui se llama a la categoria correspondiente
                 break;
             case "4":
                 System.out.println(" ");
-                Main.unidad = "L";
-                Tools.categoriaVolumen(Main.unidad, valor);
+                Main.unidad = "L"; // Unidad por defecto
+                Tools.categoriaVolumen(Main.unidad, valor); // Desde aqui se llama a la categoria correspondiente
                 break;
             case "5":
                 System.out.println(" ");
-                Main.unidad = "s";
-                Tools.categoriaTiempo(Main.unidad, valor);
+                Main.unidad = "s"; // Unidad por defecto
+                Tools.categoriaTiempo(Main.unidad, valor); // Desde aqui se llama a la categoria correspondiente
                 break;
             case "0":
                 System.out.println("¡Hasta luego!");
                 System.out.println(" ");
-                Main.main(null);
+                Main.main(null); // Volver al menu principal
                 break;
             default:
                 System.out.println("Opcion no reconocida, porfavor intentelo de nuevo");
                 System.out.println(" ");
                 unidadPorDefecto(valor);
-        }
-    }
-
-    public static void unidadValor(String unidad, double valor) {
-        if (Tools.convertirNuevaUnidad(unidad).equals("Longitud")) {
-            Tools.categoriaLongitud(unidad, valor);
-        }
-        if (Tools.convertirNuevaUnidad(unidad).equals("Masa")) {
-            Tools.categoriaMasa(unidad, valor);
-        }
-        if (Tools.convertirNuevaUnidad(unidad).equals("Temperatura")) {
-            Tools.categoriaTemperatura(unidad, valor);
-        }
-        if (Tools.convertirNuevaUnidad(unidad).equals("Volumen")) {
-            Tools.categoriaVolumen(unidad, valor);
-        }
-        if (Tools.convertirNuevaUnidad(unidad).equals("Tiempo")) {
-            Tools.categoriaTiempo(unidad, valor);
         }
     }
 }
