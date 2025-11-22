@@ -5,6 +5,8 @@ public class Tools {
     public static Scanner sc = new Scanner(System.in);
 
     // Categorias de Unidades
+    // Cada una de estas categorias llama al metodo de control de errores correspondiente
+    // y despues llama al metodo convertirEnumUnidad que se encarga de hacer las conversiones gracias al filtro que se le hizo.
     public static void categoriaLongitud(String unidad, double valor) {
         System.out.println("A que tipo de unidad desea convertir?");
 
@@ -99,7 +101,7 @@ public class Tools {
     }
 
     // Convertir
-
+    // Este metodo usa el filtro convertirNuevaUnidad para saber a que categoria pertenece la unidad a la que se quiere convertir.
     public static void convertirEnumUnidad(String unidad, String enumUnidad) {
         String tipo = convertirNuevaUnidad(unidad);
         if (tipo.equals("Longitud")) {
@@ -121,6 +123,9 @@ public class Tools {
 
     }
 
+    // Metodos de conversion
+    // Directamete hacen las operaciones correspondientes para convertir entre unidades usando una unidad base,
+    // excepto en temperatura que usa formulas directas.
     public static void convertirLongitud(String unidad, double longitud) {
         // Pasar a metros
         if (Main.unidad.equals("km")) {
@@ -331,16 +336,15 @@ public class Tools {
         System.out.println( "Tu resultado es: " + tiempo + unidad);
     }
 
-
-
     // Filtro
+    // Este metodo recibe una unidad y devuelve a que categoria pertenece o un espacio en blanco si no pertenece a ninguna.
+    // Permitiendo que el control de errores detecte si es una unidad valida o no.
     public static String convertirNuevaUnidad(String nuevaUnidad) {
         String identificadorTipo = " ";
         String[] unidadlongitud = {"km", "m", "cm", "mm", "µm", "mi", "yd", "ft", "in"}; // Nos permite validar desde una base, asi evitamos numeros o caracteres especiales
         for(int i = 0; i < unidadlongitud.length; i++){
             if(unidadlongitud[i].equals(nuevaUnidad)){
                 identificadorTipo = "Longitud";
-
                 break;
             }
         }
