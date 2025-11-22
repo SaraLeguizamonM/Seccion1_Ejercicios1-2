@@ -1,3 +1,5 @@
+package ejercicio1;
+
 public class Errores {
     // Manejo de errores de cada categoria
     // Longitud
