@@ -1,3 +1,4 @@
+package ejercicio2;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
@@ -35,14 +36,34 @@ public class Main {
                         case "1":
                             System.out.println("¿Que contraseña quieres usar? le recordamos que minimo debes usar 4 digitos.");
                             credencial = sc.nextLine();
-                            Vault vault = new Vault("PIN", credencial);
+                            Vault vault1 = new Vault("PIN", credencial);
 
                             break;
                         case "2":
-                            System.out.println("¿Que contraseña quieres usar?, ");
-
-                            break;
+                            String permisos = " ";
+                            do{
+                                System.out.println("En estos momentos requerimos permisos de la camara para indentificarlo");
+                                System.out.println("1. Permitir");
+                                System.out.println("2. Denegar");
+                                permisos = sc.nextLine();
+                                switch (permisos){
+                                    case "1.":
+                                        System.out.println("Encendidendo camara...");
+                                        System.out.println("Rostro guardado:)");
+                                        credencial = " ";
+                                        Vault vault2 = new Vault("BIOMETRICO", credencial);
+                                        
+                                    case "2":
+                                        System.out.println("⚠ Permiso negado... Se te redirigira al menu.");
+                                        permisos = opcionExterna;
+                                    default:
+                                        System.out.println("Opcion no reconocida, porfavor intentelo de nuevo");
+                                        permisos = "1";
+                                }
+                            }while(true);
+                            
                         case "3":
+                            System.out.println("Se te va a asignar una llave de acceso");
                             break;
                         default:
                             System.out.println("Opcion no reconocida, porfavor intentelo de nuevo");
