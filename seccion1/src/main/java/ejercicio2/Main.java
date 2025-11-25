@@ -1,63 +1,57 @@
-package ejercicio2;
 import java.util.Scanner;
-
 public class Main {
-    public static String unidad;
-    public static String valor;
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Bienvenido al Convertidor de Unidades Avanzadas ");
-        System.out.println("Elige la opcion que desees ejecutar: ");
-        String opcion = " ";
-        do {
-            System.out.println("1. Ingresar el valor y la unidad");
-            System.out.println("2. Ingresar solamente el valor");
-            System.out.println("0. Salir");
-            System.out.println(" ");
-            opcion = sc.nextLine();
-            switch ((opcion)) {
+
+        System.out.println("Bienvenido al sistema de caja fuerte");
+
+        String opcionInterna = " ";
+        String opcionExterna = " ";
+        do{
+            System.out.println("Que desea hacer?");
+            System.out.println("1. Iniciar sesion");
+            System.out.println("2. Crear cuenta");
+            System.out.println("3. Salir");
+            opcionExterna = sc.nextLine();
+            switch(opcionExterna){
                 case "1":
-                    boolean stringValido = false;
-                    while (!stringValido) {
-                        try {
-                            System.out.println("Ingresa una unidad que desea convertir: ");
-                            unidad = sc.nextLine().trim();
-                            Errores.controlStrings(unidad);
-                            System.out.println(" ");
-                            stringValido = true;
-
-                        } catch (Exception e) {
-                            System.out.println("Error: " + e.getMessage());
-                        }
-                    }
-                    boolean doubleValido = false;
-                    while (!doubleValido) {
-                        try{
-                            System.out.println("Ahora ingresa su valor: ");
-                            valor = sc.nextLine().trim();
-                            Medida.unidadValor(unidad, Double.parseDouble(valor));
-                            System.out.println(" ");
-                            doubleValido = true;
-
-                        }catch (Exception e){
-                            System.out.println("Error: Esa opcion no es valida.");
-                        }
-                    }
                     break;
                 case "2":
-                    System.out.println(" ");
-                    System.out.println("Ingrese su valor: ");
-                    valor = sc.nextLine();
-                    Medida.unidadPorDefecto(Double.parseDouble(valor));
+                    System.out.println("Que usuario desea tener?");
+                    String usuario = sc.nextLine();
+                    System.out.println("Cual es su contraseña?");
+                    String contraseña = sc.nextLine();
+
+                    System.out.println("¿Qué tipo de seguridad le gustaria usar para su caja fuerte?");
+                    System.out.println("Puedes usar:");
+                    System.out.println("1. PIN.");
+                    System.out.println("2. BIOMÉTRICO.");
+                    System.out.println("3. LLAVE FISICA. ");
+                    opcionInterna = sc.nextLine();
+
+                    String credencial;
+
+                    switch (opcionInterna){
+                        case "1":
+                            System.out.println("¿Que contraseña quieres usar? le recordamos que minimo debes usar 4 digitos.");
+                            credencial = sc.nextLine();
+                            Vault vault = new Vault("PIN", credencial);
+
+                            break;
+                        case "2":
+                            System.out.println("¿Que contraseña quieres usar?, ");
+
+                            break;
+                        case "3":
+                            break;
+                        default:
+                            System.out.println("Opcion no reconocida, porfavor intentelo de nuevo");
+                            opcionInterna = "1";
+                    }
                     break;
-                case "0":
-                    System.out.println("Gracias por usar el Convertidor de Unidades Avanzadas. ¡Hasta luego!");
+                case "3":
                     break;
-                default:
-                    System.out.println("Opcion no reconocida, porfavor intentelo de nuevo");
-                    opcion = "1";
             }
-        } while (!opcion.equals("0") );
+        }while(!opcionExterna.equals("0") );
     }
 }
