@@ -1,21 +1,21 @@
 package ejercicio2;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Random rand = new Random();
-        ArrayList<Persona> personas = new ArrayList<>();
+        Random rand = new Random(); // Para generar llaves fisicas aleatorias
+        ArrayList<Persona> personas = new ArrayList<>(); // Lista para almacenar las personas creadas
 
-        String usuario;
+        String usuario; 
         String contraseña;
 
         System.out.println("Bienvenido al sistema de caja fuerte");
 
-        String opcionInterna = " ";
-        String opcionExterna = " ";
+        String opcionInterna = " "; // Variable para las opciones del menu interno
+        String opcionExterna = " "; // Variable para las opciones del menu externo
         do{
             System.out.println("Que desea hacer?");
             System.out.println("1. Iniciar sesion");
@@ -35,7 +35,7 @@ public class Main {
                             System.out.println("¡Bienvenido " + usuario + "!");
                             System.out.println("Recuerda que para ingresar al vault es necesario usar \nla credencial correspondiente al metodo de seguridad elegido");
 
-                            for(int i = 3; i >= 0; i--){
+                            for(int i = 3; i >= 0; i--){ // nos va a permitir 3 intentos para abrir la caja fuerte
                                 if(persona.getvault().abrir(sc.nextLine())){
                                     System.out.println("Bienvenido a su caja fuerte:D");
                                     encontrado = true;
@@ -76,7 +76,7 @@ public class Main {
                                     try{
                                         System.out.println("¿Que contraseña quieres usar? le recordamos que minimo debes usar 4 digitos.");
                                         credencial = sc.nextLine();
-                                        Errores.controlPIN(credencial);
+                                        Errores.controlPIN(credencial);//Evitamos que el pin sea menor a 4 digitos o este vacio
                                         pinValido = true;
 
                                     }catch (Exception e){
@@ -85,7 +85,7 @@ public class Main {
                                 }
                                 break;
                             case "2":
-                                metodoDeSeguridad = "BIOMETRICO";
+                                metodoDeSeguridad = "BIOMETRICO"; //Es solo una simulacion
                                 String permisos = " ";
                                 do{
                                     System.out.println("En estos momentos requerimos permisos de la camara para indentificarlo");
@@ -98,7 +98,7 @@ public class Main {
                                             System.out.println(" ");
                                             System.out.println("Rostro guardado:)");
                                             System.out.println("Recuerda que al iniciar sesion sera necesario que escribas (activar camara)\npara que el proceso sea autoamtico");
-                                            credencial = "activar camara";
+                                            credencial = "activar camara"; //Simulamos el reconocimiento biometrico con esta frase  
                                             break;
                                         case "2":
                                             System.out.println("⚠ Permiso negado... Se te redirigira al menu.");
@@ -112,15 +112,15 @@ public class Main {
                             case "3":
                                 metodoDeSeguridad = "LLAVE FISICA";
                                 System.out.println("Se te va a asignar una llave de acceso");
-                                credencial = String.valueOf(rand.nextInt(1000,9999));
-                                System.out.println("Se a generado correctamente tu llave de acceso:" + credencial);
+                                credencial = String.valueOf(rand.nextInt(1000,9999)); //Se asemeja a las llaves unicas como las de github
+                                System.out.println("Se a generado correctamente tu llave de acceso: " + credencial);
                                 break;
                             default:
                                 System.out.println("Opcion no reconocida, porfavor intentelo de nuevo");
                                 opcionExterna = "2";
                         }
-                    } while(!opcionInterna.equals("1") && !opcionInterna.equals("2") && !opcionInterna.equals("3"));
-                    personas.add(new Persona(usuario, contraseña, new Vault(metodoDeSeguridad, credencial)));
+                    } while(!opcionInterna.equals("1") && !opcionInterna.equals("2") && !opcionInterna.equals("3")); // Repetir hasta que elija una opcion valida
+                    personas.add(new Persona(usuario, contraseña, new Vault(metodoDeSeguridad, credencial))); // Agregamos la nueva persona al arraylist
                     System.out.println(personas);
                     break;
                 case "3":
