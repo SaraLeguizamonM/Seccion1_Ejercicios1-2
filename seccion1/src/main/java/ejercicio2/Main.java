@@ -47,21 +47,23 @@ public class Main {
                                 System.out.println("2. Denegar");
                                 permisos = sc.nextLine();
                                 switch (permisos){
-                                    case "1.":
+                                    case "1":
                                         System.out.println("Encendidendo camara...");
+                                        System.out.println(" ");
                                         System.out.println("Rostro guardado:)");
-                                        credencial = " ";
+                                        credencial = "1";
                                         Vault vault2 = new Vault("BIOMETRICO", credencial);
-                                        
+                                        break;
+
                                     case "2":
                                         System.out.println("⚠ Permiso negado... Se te redirigira al menu.");
-                                        permisos = opcionExterna;
+                                        break;
                                     default:
                                         System.out.println("Opcion no reconocida, porfavor intentelo de nuevo");
-                                        permisos = "1";
                                 }
-                            }while(true);
-                            
+                            }while(!permisos.equals("1") && !permisos.equals("2"));
+                            break;
+
                         case "3":
                             System.out.println("Se te va a asignar una llave de acceso");
                             break;
