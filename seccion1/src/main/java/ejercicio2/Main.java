@@ -24,6 +24,7 @@ public class Main {
             opcionExterna = sc.nextLine();
             switch(opcionExterna){
                 case "1":
+                    Boolean encontrado = false;
                     System.out.println("Ingrese su nombre de usuario: ");
                     usuario = sc.nextLine();
                     System.out.println("Ingrese su contraseña: ");
@@ -33,11 +34,22 @@ public class Main {
                         if(persona.getUser().equals(usuario) && persona.getPassword().equals(contraseña)){
                             System.out.println("¡Bienvenido " + usuario + "!");
                             System.out.println("Recuerda que para ingresar al vault es necesario usar \nla credencial correspondiente al metodo de seguridad elegido");
-                            if(persona.getvault().abrir(sc.nextLine())){
-                                System.out.println("wii");
+
+                            for(int i = 3; i >= 0; i--){
+                                if(persona.getvault().abrir(sc.nextLine())){
+                                    System.out.println("Bienvenido a su caja fuerte:D");
+                                    encontrado = true;
+                                    break;
+                                }else{
+                                    System.out.println("Te quedan: " + i + "de intentos.");
+                                }
+                            }
+                            if(!encontrado){
+                                System.out.println("AlertaDeManipulacionException");
                             }
                         }
                     }
+
                     break;
                 case "2":
                     String metodoDeSeguridad = "";
@@ -58,8 +70,19 @@ public class Main {
                         switch (opcionInterna){
                             case "1":
                                 metodoDeSeguridad = "PIN";
-                                System.out.println("¿Que contraseña quieres usar? le recordamos que minimo debes usar 4 digitos.");
-                                credencial = sc.nextLine();
+
+                                boolean pinValido = false;
+                                while(!pinValido){
+                                    try{
+                                        System.out.println("¿Que contraseña quieres usar? le recordamos que minimo debes usar 4 digitos.");
+                                        credencial = sc.nextLine();
+                                        Errores.controlPIN(credencial);
+                                        pinValido = true;
+
+                                    }catch (Exception e){
+                                        System.out.println("Error: " + e.getMessage());
+                                    }
+                                }
                                 break;
                             case "2":
                                 metodoDeSeguridad = "BIOMETRICO";
