@@ -14,9 +14,17 @@ public class Vault {
 
         switch (this.metodoSeguridad) {
             case "PIN", "LLAVE FISICA":
-                if(this.credencial.equals(credencial)) {
-                    valido = true;
+                try{
+                    if(this.credencial.equals(credencial)) {
+                        valido = true;
+                    }
+                    Errores.denegar(this.credencial.toString(), credencial.toString());
+
+
+                }catch (Exception e){
+                    System.out.println("Error: " + e.getMessage());
                 }
+
                 break;
             case "BIOMETRICO":
 
