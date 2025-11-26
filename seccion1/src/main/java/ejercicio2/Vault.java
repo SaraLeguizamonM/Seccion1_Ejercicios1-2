@@ -13,8 +13,14 @@ public class Vault {
         Boolean valido = false;
 
         switch (this.metodoSeguridad) {
-            case "PIN", "BIOMETRICO", "LLAVE FISICA":
+            case "PIN", "LLAVE FISICA":
                 if(this.credencial.equals(credencial)) {
+                    valido = true;
+                }
+                break;
+            case "BIOMETRICO":
+
+                if(this.credencial.equals(credencial.toString().toLowerCase())) {
                     valido = true;
                 }
                 break;
