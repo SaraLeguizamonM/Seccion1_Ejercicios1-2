@@ -14,4 +14,11 @@ public class Persona {
     public Vault getvault() {
         return this.vault;
     }
+
+    public String getUser() {
+        return user;
+    }
+    public String getPassword() {
+        return password;
+    }
 }
