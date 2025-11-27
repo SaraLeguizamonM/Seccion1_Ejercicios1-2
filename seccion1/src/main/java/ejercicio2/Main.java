@@ -124,6 +124,7 @@ public class Main {
                     System.out.println(personas);
                     break;
                 case "3":
+                    System.out.println("Gracias por confiar en nuestro sistema. ¡Hasta luego!");
                     opcionExterna = "0";
                     break;
             }
