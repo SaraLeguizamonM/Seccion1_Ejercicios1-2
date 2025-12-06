@@ -32,7 +32,7 @@ pom.xml.versionsBackup
 *.tar.gz
 *.rar
 
-# IntelliJ IDEA
+# IntelliJ IDEA - se investigo en la IA como colocar lo del .gitignore en visual studio, lo mismo en los demas 
 .idea/
 *.iml
 *.iws
